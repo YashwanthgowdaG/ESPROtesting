@@ -5,7 +5,7 @@ test.describe('Facility Management Workflow', () => {
 
   
 
- test('Verify User is able to add Types and Error Message for EmptyType', async ({ facilityTypes }) => {
+ test('Verify User is able to add Types and Error Message for EmptyType is displayed ', async ({ facilityTypes }) => {
    
     
 await facilityTypes.navigateToTypes();

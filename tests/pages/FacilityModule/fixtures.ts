@@ -5,17 +5,20 @@ import { FacilityPageCategory } from './FacilityPageCategory';
 import { FacilityPageTypes } from './FacilityPageTypes';
 import { AddBlock} from './AddNewBlockMaster';
 import { AddNewFacility } from './AddNewFacility';
-
+import { Student_login } from '../Student_Application/Student_appln_login';
+import{ UG_appln }  from '../Student_Application/UG_Application';
 
 // 1. Define the types for your fixtures
 
 type MyFixtures = {
-  loginPage: LoginPage;
+  loginPage: LoginPage;   // Anyting =class name
   facilityPage: FacilityPageInfra;
   facilityCategory: FacilityPageCategory;
   facilityTypes:FacilityPageTypes;
   AddNewBlockMaster:AddBlock;
   addNewFacility: AddNewFacility;
+  Student_login:Student_login;
+  UG_appln:UG_appln;
 };
 
 // 2. Extend the base test
@@ -39,8 +42,14 @@ await use(new AddBlock(page));
    addNewFacility  : async ({page },use )=>{
 await use(new AddNewFacility(page));
 
-   }
+   },
 
+   Student_login: async ({ page }, use) => {
+    await use(new Student_login(page));
+  },
+  UG_appln: async ({ page }, use) => {
+    await use(new UG_appln(page));
+  }
 
 });
 

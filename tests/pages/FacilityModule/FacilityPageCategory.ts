@@ -31,13 +31,13 @@ export class FacilityPageCategory {
     this.facilityMaster = page.locator('span:has-text("Facility Master")');
     this.facilityManagement = page.locator('span').filter({ hasText: 'Facility Management' }).last();;
     this.masterButton = page.getByRole('button', { name: 'Masters' });
-   this.CategoryButton= page.getByRole('button', { name: 'Categories' });
-   this.AddNewButton=  page.getByRole('button', { name: 'Add' });
-  this.InputBox=  page.locator('input.form-control.form-control-sm.w-75');
- this.colourcode= page.getByRole('textbox', { name: '#000000' });
-  this.rightbutton= page.locator('div.d-flex.justify-content-end.gap-3').locator('svg').nth(0);
-  this.submitbutton= page.locator("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > button:nth-child(1)");
-  this.colorCodeError=page.getByText('Color Code is required!', { exact: true });
+    this.CategoryButton= page.getByRole('button', { name: 'Categories' });
+    this.AddNewButton=  page.getByRole('button', { name: 'Add' });
+    this.InputBox=  page.locator('input.form-control.form-control-sm.w-75');
+    this.colourcode= page.getByRole('textbox', { name: '#000000' });
+    this.rightbutton= page.locator('div.d-flex.justify-content-end.gap-3').locator('svg').nth(0);
+    this.submitbutton= page.locator("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > button:nth-child(1)");
+    this.colorCodeError=page.getByText('Color Code is required!', { exact: true });
 
 
   this.page.addLocatorHandler(
@@ -86,6 +86,7 @@ export class FacilityPageCategory {
     await expect(this.submitbutton).toBeVisible();
   
     await this.submitbutton.click();    
+   
   }
 async verifyEmptyColorCodeError(){
    await this.AddNewButton.waitFor({state:'visible'})

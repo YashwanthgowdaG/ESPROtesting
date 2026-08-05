@@ -1,6 +1,6 @@
 import { Locator, Page, expect } from '@playwright/test';
 import { LoginPage } from './LoginPage';
-import { LoadFnOutput } from 'node:module';
+import { LoadFnOutput } from 'node:module'; 
 
 
 export class FacilityPageTypes {
@@ -51,7 +51,7 @@ export class FacilityPageTypes {
    this.confirmButton= page.locator('button:has-text("CONFIRM")');
    this.dropdownoption=page.getByRole('option', { name: 'Academic' });
    this.TypenameError=page.getByText('Type Name is required!', { exact: true });
-   this.deleteIcon=page.locator("//tbody/tr[5]/td[4]/div[1]/button[2]//*[name()='svg']//*[name()='path' and contains(@d,'M6 19c0 1.')]");
+   this.deleteIcon=page.locator("//tbody/tr[2]/td[4]/div[1]/button[2]");
    this.deleteYesButton=page.getByText('YES', { exact: true });
    this.deleteOkButton=page.getByText('OK', { exact: true });
    this.Xbutton=page.locator(".lucide.lucide-x.text-danger.cursor-pointer");
@@ -59,7 +59,7 @@ export class FacilityPageTypes {
     this.page.addLocatorHandler(
       this.page.getByText('ESPro Update Available', { exact: true }),
       async () => {
-        console.log('⚠️ Random ESPro Update Popup detected! Automating bypass...');
+        console.log(' Random ESPro Update Popup detected! Automating bypass...');
         await this.page.getByRole('button', { name: 'Refresh Later' }).click();
       }
     );
@@ -89,11 +89,8 @@ export class FacilityPageTypes {
   async createRandomTypes(){
     await this.AddNewButton.waitFor({state:'visible'});
     await this.AddNewButton.click();
-
-    // 3. Fill data
     await this.TypeInputName.waitFor({state:'visible'});
     const randomType = `Class_${Math.random().toString(36).substring(2, 7)}`;
-    
     await this.TypeInputName.fill(randomType);   
     await this.CategoryDropdown.waitFor({state:'visible'});
     await this.CategoryDropdown.click();
