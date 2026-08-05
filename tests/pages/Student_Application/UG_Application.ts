@@ -121,7 +121,7 @@ export class UG_appln {
     for (let i = 1; i < count; i++) {
       const sel = selects.nth(i);
       if (await sel.isVisible()) {
-        const optionCount = await sel.locator('option').count();
+        const optionCount = await sel.locator('option').count()  ;
         if (optionCount > 1) {
           await sel.selectOption({ index: 1 });
         } else if (optionCount === 1) {
