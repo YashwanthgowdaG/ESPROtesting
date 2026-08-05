@@ -18,6 +18,8 @@ export class Student_login{
     
   }
 
+
+  
   // 3. Page Actions (Methods)
   async navigate() {
     await this.page.goto('https://qap.christuniversity.in/Application/');
