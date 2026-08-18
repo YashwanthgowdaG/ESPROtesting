@@ -2,7 +2,7 @@
   {
     "name": "UG sample 1",
     "login": { "email": "317500testchristuniversity@gmail.com", "password": "christ@2022" },
-    "filePath": "C:/Users/yashwanth.gowda/Downloads/image (1).png",
+    "filePath": "tests/data/images/student-photo.png",
     "tenth": { "board": "SSLC", "year": "2018", "month": "August", "country": "India", "state": "Karnataka", "obtained": "100", "total": "120", "institution": "christ" },
     "twelveth": { "board": "PUC", "exam": "Karnataka PUC", "year": "2020", "month": "August", "country": "India", "state": "Karnataka", "obtained": "100", "total": "120", "institution": "christ" }
   }
