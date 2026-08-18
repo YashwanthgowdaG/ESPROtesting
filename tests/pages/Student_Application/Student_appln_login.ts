@@ -25,6 +25,8 @@ export class Student_login{
     await this.page.goto('https://qap.christuniversity.in/Application/');
   }
 
+  
+
   async loginvalid(user: string, pass: string) {
     await this.email.waitFor({state:'visible'});
     await this.email.fill(user);

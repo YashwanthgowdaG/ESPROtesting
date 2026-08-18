@@ -7,6 +7,7 @@ import { AddBlock} from './AddNewBlockMaster';
 import { AddNewFacility } from './AddNewFacility';
 import { Student_login } from '../Student_Application/Student_appln_login';
 import{ UG_appln }  from '../Student_Application/UG_Application';
+import {selection_plan} from '../Admission_Module/selection_process_plan'
 
 // 1. Define the types for your fixtures
 
@@ -19,6 +20,7 @@ type MyFixtures = {
   addNewFacility: AddNewFacility;
   Student_login:Student_login;
   UG_appln:UG_appln;
+  selection_plan:selection_plan;
 };
 
 // 2. Extend the base test
@@ -49,7 +51,14 @@ await use(new AddNewFacility(page));
   },
   UG_appln: async ({ page }, use) => {
     await use(new UG_appln(page));
+  },
+  selection_plan:async({page},use)=>{
+    await use(new selection_plan(page) )
   }
+
+
+
+
 
 });
 
