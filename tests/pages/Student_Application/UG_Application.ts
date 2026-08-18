@@ -119,7 +119,8 @@ export class UG_appln {
   async apply_first_ug_program_and_submit_profile(data?: any) {
     const loginEmail = data?.login?.email ?? '317500testchristuniversity@gmail.com';
     const loginPassword = data?.login?.password ?? 'christ@2022';
-    const uploadFile = data?.filePath ?? path.resolve('tests/data/images/student-photo.png');
+    const uploadimage = data?.filePath ?? path.resolve('tests/data/images/student-photo.png');
+    const uploadmarkscard=data?.secondFilePath ?? path.resolve('tests/data/images/student_marks_card.png"');
     const tenth = data?.tenth ?? { board: 'SSLC', year: '2018', month: 'August', country: 'India', state: 'Karnataka', obtained: '100', total: '120', institution: 'christ' };
     const twelveth = data?.twelveth ?? { board: 'PUC', exam: 'Karnataka PUC', year: '2020', month: 'August', country: 'India', state: 'Karnataka', obtained: '100', total: '120', institution: 'christ' };
 
@@ -172,7 +173,7 @@ await this.page.waitForTimeout(1000);
 
 // Target the underlying <input type="file"> element directly
 const inputfile = this.page.locator('input[type="file"]'); 
-await inputfile.setInputFiles(uploadFile);
+await inputfile.setInputFiles(uploadimage);
 
 await this.page.waitForTimeout(2000);
 await this.submitButton.click();
@@ -310,14 +311,14 @@ if(await this.subjecteligibilitylink.isVisible()){
   if(await uploadButtons.nth(0).isVisible()) {
 await uploadButtons.nth(0).click();
 await this.page.waitForTimeout(1000);
-await fileInput.setInputFiles(uploadFile);
+await fileInput.setInputFiles(uploadmarkscard);
 await this.page.waitForTimeout(1000);
 await this.submitButton.click();
 }
 // Upload for Class 11/12
 if(await uploadButtons.nth(1).isVisible()) {
 await uploadButtons.nth(1).click();
-await fileInput.setInputFiles(uploadFile);
+await fileInput.setInputFiles(uploadmarkscard);
 await this.page.waitForTimeout(1000);
 await this.submitButton.click();
 
