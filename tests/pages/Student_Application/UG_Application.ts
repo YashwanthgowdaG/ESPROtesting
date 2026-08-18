@@ -1,6 +1,7 @@
 // ...existing code...
 import { Locator, Page, expect } from '@playwright/test';
 import { Student_login } from './Student_appln_login';
+import path from 'path';
 
 export class UG_appln {
   readonly page: Page;
@@ -118,7 +119,7 @@ export class UG_appln {
   async apply_first_ug_program_and_submit_profile(data?: any) {
     const loginEmail = data?.login?.email ?? '317500testchristuniversity@gmail.com';
     const loginPassword = data?.login?.password ?? 'christ@2022';
-    const uploadFile = data?.filePath ?? 'C:/Users/yashwanth.gowda/Downloads/image (1).png';
+    const uploadFile = data?.filePath ?? path.resolve('tests/data/images/student-photo.png');
     const tenth = data?.tenth ?? { board: 'SSLC', year: '2018', month: 'August', country: 'India', state: 'Karnataka', obtained: '100', total: '120', institution: 'christ' };
     const twelveth = data?.twelveth ?? { board: 'PUC', exam: 'Karnataka PUC', year: '2020', month: 'August', country: 'India', state: 'Karnataka', obtained: '100', total: '120', institution: 'christ' };
 
