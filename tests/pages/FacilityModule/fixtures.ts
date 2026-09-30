@@ -7,7 +7,12 @@ import { AddBlock} from './AddNewBlockMaster';
 import { AddNewFacility } from './AddNewFacility';
 import { Student_login } from '../Student_Application/Student_appln_login';
 import{ UG_appln }  from '../Student_Application/UG_Application';
-import {selection_plan} from '../Admission_Module/selection_process_plan'
+import{ PG_appln }  from '../Student_Application/PG_Application';
+import {DocumentVerificationSchedulingUG} from '../Admission_Module/DocumentVerificationSchedulingUG';
+
+import { Draft_discard } from '../Student_Application/DraftAppllicationRemoval';
+import {DocumentVerificationSchedulingPG} from '../Admission_Module/DocumentVerificationSchedulingPG';
+import { IndividualDocumentVerification } from '../Admission_Module/Individual_Document _Verification';
 
 // 1. Define the types for your fixtures
 
@@ -20,7 +25,11 @@ type MyFixtures = {
   addNewFacility: AddNewFacility;
   Student_login:Student_login;
   UG_appln:UG_appln;
-  selection_plan:selection_plan;
+  PG_appln:PG_appln;
+  DocumentVerificationSchedulingUG:DocumentVerificationSchedulingUG;
+  Draft_discard:Draft_discard;
+  DocumentVerificationSchedulingPG:DocumentVerificationSchedulingPG;
+  IndividualDocumentVerification:IndividualDocumentVerification;
 };
 
 // 2. Extend the base test
@@ -52,8 +61,20 @@ await use(new AddNewFacility(page));
   UG_appln: async ({ page }, use) => {
     await use(new UG_appln(page));
   },
-  selection_plan:async({page},use)=>{
-    await use(new selection_plan(page) )
+  PG_appln: async ({ page }, use) => {
+    await use(new PG_appln(page));
+  },
+  DocumentVerificationSchedulingUG:async({page},use)=>{
+    await use(new DocumentVerificationSchedulingUG(page) )
+  },
+   Draft_discard:async({page},use)=>{
+    await use(new Draft_discard(page) )
+  },
+  DocumentVerificationSchedulingPG:async({page},use)=>{
+    await use(new DocumentVerificationSchedulingPG(page) )
+  },
+  IndividualDocumentVerification:async({page},use)=>{
+    await use(new IndividualDocumentVerification(page) )
   }
 
 

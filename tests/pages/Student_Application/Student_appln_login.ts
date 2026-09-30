@@ -13,7 +13,7 @@ export class Student_login{
     this.page = page;
     // 2. Initialize locators in the constructor
     this.email = page.getByRole('textbox', { name: 'Email' });
-    this.password =page.getByRole('textbox', { name: 'Password'  });
+    this.password =page.getByRole('textbox', { name: 'Password' });
     this.loginButton = page.getByRole('button', { name: 'Login' });
     
   }

@@ -20,7 +20,7 @@ export class LoginPage {
 
   // 3. Page Actions (Methods)
   async navigate() {
-    await this.page.goto('https://qap.christuniversity.in/ERP/');
+    await this.page.goto('https://prepespro.christuniversity.in/ERP/');
   }
 
   async loginvalid(user: string, pass: string) {
@@ -30,7 +30,7 @@ export class LoginPage {
     await this.password.fill(pass);
     await this.loginButton.waitFor({state:'visible'});
     await this.loginButton.click({ force: true });
-    await expect(this.page).toHaveURL('https://qap.christuniversity.in/ERP/');
+    await expect(this.page).toHaveURL('https://prepespro.christuniversity.in/ERP/');
   }
 
 async logininvalid(user: string, pass: string) {

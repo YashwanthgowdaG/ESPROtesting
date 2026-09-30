@@ -3,12 +3,13 @@ import { Locator, Page, expect } from '@playwright/test';
 import { Student_login } from './Student_appln_login';
 import path from 'path';
 
-export class UG_appln {
+export class PG_appln {
   readonly page: Page;
   readonly newApplication: Locator;
   readonly ApplicationforDropdown: Locator;
   readonly UG_option: Locator;
   readonly PHD_option:Locator;
+  readonly PG_option:Locator;
   readonly Student_login: Student_login;
   readonly apply: Locator;
   readonly okButton: Locator;
@@ -54,6 +55,15 @@ export class UG_appln {
   readonly totalMarksTwelveth:Locator;
   readonly nameOfInstitutionTwelveth:Locator;
 
+  //Degree
+  readonly University:Locator;    
+  readonly exam:Locator;
+  readonly year:Locator;
+  readonly Month:Locator;
+  readonly country:Locator;
+  readonly state:Locator;
+  readonly institution:Locator;
+
   //subject eligibility locators
   readonly subjecteligibilitylink:Locator;
   readonly maxmarksinputbox:Locator;
@@ -98,7 +108,7 @@ export class UG_appln {
     this.newApplication = page.getByText('NEW APPLICATION', { exact: true });
     this.ApplicationforDropdown = page.getByRole('combobox', { name: 'Application For *' });
     this.UG_option = page.getByRole('option', { name: 'Under Graduate Degree' });
-
+    this.PG_option=page.getByRole('option', { name: 'Post Graduate Degree' });
     this.PHD_option=page.getByRole('option', { name: 'PhD' });
 
     this.apply = page.getByRole('button', { name: 'Apply Now' }).first();
@@ -143,6 +153,17 @@ export class UG_appln {
     this.totalMarksTwelveth=page.locator('#maxMarks').nth(1);
     this.nameOfInstitutionTwelveth=page.getByRole('combobox', { name: 'Type to Search...' }).nth(1);
 
+    //Degree
+    this.University=
+    this.exam=page.getByRole('combobox', { name: 'Exam Name *' });
+    this.year=page.getByRole('combobox', { name: 'Year of Passing *' }).nth(2);
+    this.Month=page.getByRole('combobox', { name: 'Month of Passing *' }).nth(2);
+    this.country=page.getByRole('combobox', { name: 'Country of Institution *' }).nth(2);
+    this.state=page.locator('#freesol-other-options').nth(7);
+    this.institution= page.locator("(//label[starts-with(normalize-space(.),'Name & Address of the Institution')]/following-sibling::div//input)[3]");
+
+
+
     this.subjecteligibilitylink=page.getByText('Enter Subject Details', { exact: true });
     this.maxmarksinputbox=page.locator('#maximumMarks');
     this.minmarksinputbox= page.locator('#marksObtained');
@@ -178,21 +199,22 @@ export class UG_appln {
 
   }
 
-  async apply_first_ug_program_and_submit_profile(data?: any) {
+  async apply_first_PG_program_and_submit_profile(data?: any) {
     const loginEmail = data?.login?.email ?? 'yashwanth.gowda@cdi.christuniversity.in';
     const loginPassword = data?.login?.password ?? 'Yash@3625';
     const uploadimage = data?.filePath ?? path.resolve('tests/data/images/student-photo.png');
     const uploadmarkscard=data?.secondFilePath ?? path.resolve('tests/data/images/student_marks_card.png"');
     const tenth = data?.tenth ?? { board: 'SSLC', year: '2018', month: 'August', country: 'India', state: 'Karnataka', obtained: '100', total: '120', institution: 'christ' };
     const twelveth = data?.twelveth ?? { board: 'PUC', exam: 'Karnataka PUC', year: '2020', month: 'August', country: 'India', state: 'Karnataka', obtained: '100', total: '120', institution: 'christ' };
-
+    const Degree = data?.Degree ?? {University:"Christ University",examname:"BBA",year:"2023",Month:"August",country:"India",state:"Karnataka", institution: "christ"};
+    
     await this.Student_login.navigate();
     await this.Student_login.loginvalid(loginEmail, loginPassword);
 
     await this.newApplication.click();
     await this.ApplicationforDropdown.click();
-     await this.UG_option.click();
-
+     //await this.UG_option.click();
+    await this.PG_option.click();
     //await this.PHD_option.click();
 
     await this.page.waitForTimeout(2000);
@@ -265,6 +287,18 @@ if (count > 0) {
 }
  await this.saveAndproceedButton.click();
 await this.page.waitForTimeout(2000); 
+
+
+if(await this.eligiblity.isVisible()) {
+  await this.eligiblity.click();
+  await this.eligiblity.press('ArrowDown');
+  await this.eligiblity.press('Enter');
+  await this.eligibilitytest.click();
+  await this.eligibilitytest.press('ArrowDown');
+  await this.eligibilitytest.press('Enter');
+ 
+await this.saveAndproceedButton.click();
+}
 
 
 
@@ -350,16 +384,6 @@ await this.page.waitForTimeout(1000);
 
 
 
-if(await this.eligiblity.isVisible()) {
-  await this.eligiblity.click();
-  await this.eligiblity.press('ArrowDown');
-  await this.eligiblity.press('Enter');
-  await this.eligibilitytest.click();
-  await this.eligibilitytest.press('ArrowDown');
-  await this.eligibilitytest.press('Enter');
- 
-await this.saveAndproceedButton.click();
-}
 
 if(await this.saveAndproceedButton.isVisible){
 await this.page.waitForTimeout(1000);

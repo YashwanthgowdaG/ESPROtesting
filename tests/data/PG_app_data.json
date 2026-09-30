@@ -1,10 +1,11 @@
 [
   {
-    "name": "UG sample 1",
+    "name": "PG sample 1",
     "login": { "email": "yashwanth.gowda@cdi.christuniversity.in", "password": "Yash@3625" },
     "filePath": "tests/data/images/student-photo.png",
     "secondFilePath": "tests/data/images/student_marks_card.png",
     "tenth": { "board": "SSLC", "year": "2018", "month": "August", "country": "India", "state": "Karnataka", "obtained": "100", "total": "120", "institution": "christ" },
-    "twelveth": { "board": "PUC", "exam": "Karnataka PUC", "year": "2020", "month": "August", "country": "India", "state": "Karnataka", "obtained": "100", "total": "120", "institution": "christ" }
-  }
+    "twelveth": { "board": "PUC", "exam": "Karnataka PUC", "year": "2020", "month": "August", "country": "India", "state": "Karnataka", "obtained": "100", "total": "120", "institution": "christ" },
+    "Degree":{"University":"Christ University","examname":"BBA","year":"2023","Month":"August","country":"India","state":"Karnataka", "institution": "christ"}
+}
 ]
